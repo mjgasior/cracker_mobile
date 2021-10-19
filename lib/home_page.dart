@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'markers_list.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -11,6 +13,6 @@ class HomePage extends StatelessWidget {
           'Cracker app',
           style: Theme.of(context).textTheme.subtitle1,
         )),
-        body: Text('Body', style: Theme.of(context).textTheme.subtitle1));
+        body: const MarkersList());
   }
 }
