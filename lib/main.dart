@@ -1,3 +1,5 @@
+import 'package:cracker_mobile/cracker_theme.dart';
+import 'package:cracker_mobile/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -13,11 +15,11 @@ class CrackerApp extends StatefulWidget {
 }
 
 class _CrackerAppState extends State<CrackerApp> {
-  static const $API_ADDRESS = 'https://cracker.red/api';
+  static const _apiAddress = 'https://cracker.red/api';
   ValueNotifier<GraphQLClient>? client;
 
   void initializeClient() {
-    final HttpLink httpLink = HttpLink($API_ADDRESS);
+    final HttpLink httpLink = HttpLink(_apiAddress);
     ValueNotifier<GraphQLClient> newClient = ValueNotifier(GraphQLClient(
       link: httpLink,
       cache: GraphQLCache(store: InMemoryStore()),
@@ -37,6 +39,8 @@ class _CrackerAppState extends State<CrackerApp> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = CrackerTheme.dark();
+
     if (client == null) {
       return const MaterialApp(home: Text("Loading..."));
     }
@@ -45,7 +49,8 @@ class _CrackerAppState extends State<CrackerApp> {
       client: client,
       child: MaterialApp(
         title: 'Cracker mobile app',
-        home: const Text('Flutter Demo Home Page'),
+        theme: theme,
+        home: const HomePage(),
       ),
     );
   }
