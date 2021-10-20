@@ -45,12 +45,7 @@ Success
 
 - [Advanced Layout Rule Even Beginners Must Know](https://medium.com/flutter-community/flutter-the-advanced-layout-rule-even-beginners-must-know-edc9516d1a2)
 - [Android Asset Studio for assets generation](https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)
-- [Auth0 with Flutter](https://auth0.com/blog/get-started-with-flutter-authentication/)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-- [Dart language tour](https://dart.dev/guides/language/language-tour)
+- [Auth0 with Flutter](https://auth0.com/blog/flutter-authentication-authorization-with-auth0-part-1-adding-authentication-to-an-app/)
 - [Hide your api keys from your android manifest file with Flutter using local.properties](https://dev.to/stevenosse/hide-your-api-keys-from-your-android-manifest-file-with-flutter-using-local-properties-3f4e)
 - [Icon converter for mobile devices](https://appicon.co/)
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Online documentation](https://flutter.dev/docs)
 - [Widget lifecycle in Flutter](https://stackoverflow.com/questions/41479255/life-cycle-in-flutter)
-- [Windows installation instructions](https://flutter.dev/docs/get-started/install/windows)
