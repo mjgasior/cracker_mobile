@@ -1,4 +1,5 @@
 import 'package:cracker_mobile/cracker_theme.dart';
+import 'package:cracker_mobile/helpers/constants.dart';
 import 'package:cracker_mobile/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -40,9 +41,9 @@ class _CrackerAppState extends State<CrackerApp> {
   @override
   Widget build(BuildContext context) {
     final theme = CrackerTheme.dark();
-    const AUTH0_DOMAIN = String.fromEnvironment('VERSION');
-    print('asdas');
-    print(AUTH0_DOMAIN);
+
+    print(auth0ClientId);
+    print(auth0Domain);
 
     if (client == null) {
       return const MaterialApp(home: Text("Loading..."));

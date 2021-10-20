@@ -47,7 +47,6 @@ class MarkersList extends StatelessWidget {
           return ListView.builder(
             itemCount: result.data?['markers'].length,
             itemBuilder: (context, index) {
-              print(result.data?['markers'][index]);
               final marker = result.data?['markers'][index]['polish']['name'];
               return Text(marker);
             },
