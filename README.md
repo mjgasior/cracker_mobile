@@ -8,6 +8,11 @@ Big thanks to :octocat: [mmBs](https://github.com/mmBs) for time and advice. :cl
 
 ## Setup:
 
+1. You first need to define certain Dart environment variables:
+    - `AUTH0_DOMAIN` - the domain address of your Auth0 account
+    - `AUTH0_CLIENT_ID` - the client ID of your mobile app from Auth0
+   Detailed instruction on how to define `--dart-define` arguments you can find [here](https://stackoverflow.com/questions/55004302/how-do-you-pass-arguments-from-command-line-to-main-in-flutter-dart).
+
 If you plan to edit the localization files present in `lib/l10n` which are of ARB  ([Application Resource Bundle](https://stackoverflow.com/questions/43082804/l10n-arb-file-format)) format, it would be a good idea to get a special IDE plugin which understands how to format such files.
 
 0. Before running the app you will need [Google Maps API key](https://console.cloud.google.com/apis/credentials).

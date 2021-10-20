@@ -40,6 +40,9 @@ class _CrackerAppState extends State<CrackerApp> {
   @override
   Widget build(BuildContext context) {
     final theme = CrackerTheme.dark();
+    const AUTH0_DOMAIN = String.fromEnvironment('VERSION');
+    print('asdas');
+    print(AUTH0_DOMAIN);
 
     if (client == null) {
       return const MaterialApp(home: Text("Loading..."));
