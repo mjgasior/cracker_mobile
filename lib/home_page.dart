@@ -1,7 +1,7 @@
-import 'package:cracker_mobile/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 import 'markers_list.dart';
+import './services/auth_service.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

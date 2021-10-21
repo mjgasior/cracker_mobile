@@ -1,6 +1,6 @@
 ![Cracker app logo](logo.svg)
 
-# cracker-mobile-flutter
+# cracker_mobile
 
 _"Crack Kraków with the Cracker app!"_
 
