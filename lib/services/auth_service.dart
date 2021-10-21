@@ -9,7 +9,6 @@ import '../helpers/constants.dart';
 // import 'package:mjcoffee/models/auth0_user.dart';
 
 class AuthService {
-
   static final AuthService instance = AuthService._internal();
   factory AuthService() => instance;
   AuthService._internal();
@@ -17,4 +16,19 @@ class AuthService {
   final FlutterAppAuth appAuth = FlutterAppAuth();
   final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
 
+  login() async {
+    final authorizationTokenRequest = AuthorizationTokenRequest(
+      auth0ClientId,
+      auth0RedirectUri,
+      issuer: auth0Issuer,
+      scopes: ['openid', 'profile', 'offline_access', 'email'],
+    );
+
+    final AuthorizationTokenResponse? result =
+        await appAuth.authorizeAndExchangeCode(
+      authorizationTokenRequest,
+    );
+
+    print(result);
+  }
 }
