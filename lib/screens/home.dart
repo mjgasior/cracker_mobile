@@ -11,6 +11,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isProgressing = false;
+  bool isLoggedIn = false;
+  String errorMessage = '';
+  String? name;
+
+  @override
+  void initState() {
+    initAction();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,14 +32,64 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         body: Column(
           children: [
-            ElevatedButton(child: const Text('sad'), onPressed: () {
-              print('asda');
-              final authService = AuthService.instance;
-              authService.login();
-
-            },),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                if (isProgressing)
+                  const CircularProgressIndicator()
+                else if (!isLoggedIn)
+                  ElevatedButton(
+                    onPressed: loginAction,
+                    child: const Text('Login | Register'),
+                  )
+                else
+                  Text('Welcome $name'),
+              ], // <Widget>[]
+            ),
             const Expanded(child: MarkersList())
           ],
         ));
+  }
+
+  setSuccessAuthState() {
+    setState(() {
+      isProgressing = false;
+      isLoggedIn = true;
+      name = AuthService.instance.idToken?.name;
+    });
+
+    // CoffeeRouter.instance.push(MenuScreen.route());
+  }
+
+  setLoadingState() {
+    setState(() {
+      isProgressing = true;
+      errorMessage = '';
+    });
+  }
+
+  Future<void> loginAction() async {
+    setLoadingState();
+    final message = await AuthService.instance.login();
+    if (message == 'Success') {
+      setSuccessAuthState();
+    } else {
+      setState(() {
+        isProgressing = false;
+        errorMessage = message;
+      });
+    }
+  }
+
+  initAction() async {
+    setLoadingState();
+    final bool isAuth = await AuthService.instance.init();
+    if (isAuth) {
+      setSuccessAuthState();
+    } else {
+      setState(() {
+        isProgressing = false;
+      });
+    }
   }
 }
