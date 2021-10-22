@@ -1,7 +1,7 @@
-const auth0Domain = String.fromEnvironment('AUTH0_DOMAIN');
-const auth0ClientId = String.fromEnvironment('AUTH0_CLIENT_ID');
-const auth0Issuer = 'https://$auth0Domain';
-const bundleIdentifier = 'com.cracker.red';
-const auth0RedirectUri = '$bundleIdentifier://login-callback';
+const AUTH0_DOMAIN = String.fromEnvironment('AUTH0_DOMAIN');
+const AUTH0_CLIENT_ID = String.fromEnvironment('AUTH0_CLIENT_ID');
+const AUTH0_ISSUER = 'https://$AUTH0_DOMAIN';
+const BUNDLE_IDENTIFIER = 'com.cracker.red';
+const AUTH0_REDIRECT_URI = '$BUNDLE_IDENTIFIER://login-callback';
 
 const REFRESH_TOKEN_KEY = 'refresh_token';

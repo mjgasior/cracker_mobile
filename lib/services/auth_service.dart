@@ -20,12 +20,37 @@ class AuthService {
   Auth0IdToken? idToken;
   String? auth0AccessToken;
 
+  Future<bool> init() async {
+    final storedRefreshToken = await secureStorage.read(key: REFRESH_TOKEN_KEY);
+
+    if (storedRefreshToken == null) {
+      return false;
+    }
+
+    try {
+      final TokenResponse? result = await appAuth.token(
+        TokenRequest(
+          AUTH0_CLIENT_ID,
+          AUTH0_REDIRECT_URI,
+          issuer: AUTH0_ISSUER,
+          refreshToken: storedRefreshToken,
+        ),
+      );
+      final String setResult = await _setLocalVariables(result);
+      return setResult == 'Success';
+    } catch (e, s) {
+      print('error on Refresh Token: $e - stack: $s');
+      // logOut() possibly
+      return false;
+    }
+  }
+
   login() async {
     try {
       final authorizationTokenRequest = AuthorizationTokenRequest(
-        auth0ClientId,
-        auth0RedirectUri,
-        issuer: auth0Issuer,
+        AUTH0_CLIENT_ID,
+        AUTH0_REDIRECT_URI,
+        issuer: AUTH0_ISSUER,
         scopes: ['openid', 'profile', 'offline_access', 'email'],
       );
 
@@ -59,7 +84,7 @@ class AuthService {
 
   Future<Auth0User> getUserDetails(String accessToken) async {
     final url = Uri.https(
-      auth0Domain,
+      AUTH0_DOMAIN,
       '/userinfo',
     );
 
