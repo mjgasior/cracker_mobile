@@ -36,8 +36,13 @@ Performing Streamed Install
 Success
 ```
 
+## Snippets:
+
+- `flutter pub run build_runner build --delete-conflicting-outputs` - force generation of the JSON deserialization files
+
 ## Packages:
 
+- `build_runner` - provides a concrete way of generating files using Dart code (used to generate JSON deserialization class files in `json_serializable`)
 - `flutter_appauth` - a well-maintained wrapper package around AppAuth for Flutter developed by Michael Bui. AppAuth authenticates and authorizes users and supports the PKCE extension
 - *(not yet migrated)* `flutter_localizations` - package that specifies additional `MaterialApp` properties that include localization
 - `flutter_secure_storage` - library to securely persist data locally
@@ -45,6 +50,8 @@ Success
 - *(not yet migrated)* `google_maps_flutter` - plugin that provides a Google Maps widget
 - `graphql-flutter` - a package based on Apollo GraphQL client that allows an integration with a GraphQL server in Flutter
 - `http` - a composable, Future-based library for making HTTP requests published by the Dart Team
+- `json_annotation` - defines the annotations used by [json_serializable](https://pub.dev/packages/json_serializable) to create code for JSON serialization and deserialization
+- `json_serializable` - it is used to generate a class that allows deserialization of a JSON to a Dart class object by annotating it with `@JsonSerializable` and using the `build_runner` to autogenerate a class file
 
 ## Resources:
 
