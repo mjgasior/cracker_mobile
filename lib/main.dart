@@ -1,5 +1,6 @@
 import 'package:cracker_mobile/cracker_theme.dart';
-import 'package:cracker_mobile/home_page.dart';
+import 'package:cracker_mobile/helpers/constants.dart';
+import 'package:cracker_mobile/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -41,6 +42,9 @@ class _CrackerAppState extends State<CrackerApp> {
   Widget build(BuildContext context) {
     final theme = CrackerTheme.dark();
 
+    print(AUTH0_CLIENT_ID);
+    print(AUTH0_DOMAIN);
+
     if (client == null) {
       return const MaterialApp(home: Text("Loading..."));
     }
@@ -50,7 +54,7 @@ class _CrackerAppState extends State<CrackerApp> {
       child: MaterialApp(
         title: 'Cracker mobile app',
         theme: theme,
-        home: const HomePage(),
+        home: const HomeScreen(),
       ),
     );
   }

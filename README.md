@@ -1,12 +1,17 @@
 ![Cracker app logo](logo.svg)
 
-# cracker-mobile-flutter
+# cracker_mobile
 
 _"Crack Kraków with the Cracker app!"_
 
 Big thanks to :octocat: [mmBs](https://github.com/mmBs) for time and advice. :clap:
 
 ## Setup:
+
+1. You first need to define certain Dart environment variables:
+    - `AUTH0_DOMAIN` - the domain address of your Auth0 account
+    - `AUTH0_CLIENT_ID` - the client ID of your mobile app from Auth0
+   Detailed instruction on how to define `--dart-define` arguments you can find [here](https://stackoverflow.com/questions/55004302/how-do-you-pass-arguments-from-command-line-to-main-in-flutter-dart).
 
 If you plan to edit the localization files present in `lib/l10n` which are of ARB  ([Application Resource Bundle](https://stackoverflow.com/questions/43082804/l10n-arb-file-format)) format, it would be a good idea to get a special IDE plugin which understands how to format such files.
 
@@ -31,26 +36,28 @@ Performing Streamed Install
 Success
 ```
 
+## Snippets:
+
+- `flutter pub run build_runner build --delete-conflicting-outputs` - force generation of the JSON deserialization files
+
 ## Packages:
 
+- `build_runner` - provides a concrete way of generating files using Dart code (used to generate JSON deserialization class files in `json_serializable`)
 - `flutter_appauth` - a well-maintained wrapper package around AppAuth for Flutter developed by Michael Bui. AppAuth authenticates and authorizes users and supports the PKCE extension
-- `flutter_localizations` - package that specifies additional `MaterialApp` properties that include localization
+- *(not yet migrated)* `flutter_localizations` - package that specifies additional `MaterialApp` properties that include localization
 - `flutter_secure_storage` - library to securely persist data locally
-- `geolocator` - geolocation plugin which provides easy access to platform specific location services (FusedLocationProviderClient or if not available the LocationManager on Android and CLLocationManager on iOS)
-- `google_maps_flutter` - plugin that provides a Google Maps widget
+- *(not yet migrated)* `geolocator` - geolocation plugin which provides easy access to platform specific location services (FusedLocationProviderClient or if not available the LocationManager on Android and CLLocationManager on iOS)
+- *(not yet migrated)* `google_maps_flutter` - plugin that provides a Google Maps widget
 - `graphql-flutter` - a package based on Apollo GraphQL client that allows an integration with a GraphQL server in Flutter
 - `http` - a composable, Future-based library for making HTTP requests published by the Dart Team
+- `json_annotation` - defines the annotations used by [json_serializable](https://pub.dev/packages/json_serializable) to create code for JSON serialization and deserialization
+- `json_serializable` - it is used to generate a class that allows deserialization of a JSON to a Dart class object by annotating it with `@JsonSerializable` and using the `build_runner` to autogenerate a class file
 
 ## Resources:
 
 - [Advanced Layout Rule Even Beginners Must Know](https://medium.com/flutter-community/flutter-the-advanced-layout-rule-even-beginners-must-know-edc9516d1a2)
 - [Android Asset Studio for assets generation](https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)
-- [Auth0 with Flutter](https://auth0.com/blog/get-started-with-flutter-authentication/)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-- [Dart language tour](https://dart.dev/guides/language/language-tour)
+- [Auth0 with Flutter](https://auth0.com/blog/flutter-authentication-authorization-with-auth0-part-1-adding-authentication-to-an-app/) with this GitHub [repo](https://github.com/mhadaily/MJ-Coffee-app)
 - [Hide your api keys from your android manifest file with Flutter using local.properties](https://dev.to/stevenosse/hide-your-api-keys-from-your-android-manifest-file-with-flutter-using-local-properties-3f4e)
 - [Icon converter for mobile devices](https://appicon.co/)
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Online documentation](https://flutter.dev/docs)
 - [Widget lifecycle in Flutter](https://stackoverflow.com/questions/41479255/life-cycle-in-flutter)
-- [Windows installation instructions](https://flutter.dev/docs/get-started/install/windows)
