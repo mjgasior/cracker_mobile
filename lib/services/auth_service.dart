@@ -48,11 +48,10 @@ class AuthService {
   login() async {
     try {
       final authorizationTokenRequest = AuthorizationTokenRequest(
-        AUTH0_CLIENT_ID,
-        AUTH0_REDIRECT_URI,
-        issuer: AUTH0_ISSUER,
-        scopes: ['openid', 'profile', 'offline_access', 'email'],
-      );
+          AUTH0_CLIENT_ID, AUTH0_REDIRECT_URI,
+          issuer: AUTH0_ISSUER,
+          scopes: ['openid', 'profile', 'offline_access', 'email'],
+          promptValues: ['login']);
 
       final AuthorizationTokenResponse? result =
           await appAuth.authorizeAndExchangeCode(
@@ -65,6 +64,32 @@ class AuthService {
     } catch (e) {
       return 'Unknown error!';
     }
+  }
+
+  Future<bool> logout() async {
+    await secureStorage.delete(key: REFRESH_TOKEN_KEY);
+
+    final url = Uri.https(
+      AUTH0_DOMAIN,
+      '/v2/logout',
+      {
+        'client_id': AUTH0_CLIENT_ID,
+        'federated': '',
+        //'returnTo': 'YOUR_RETURN_LOGOUT_URL'
+      },
+    );
+
+    final response = await http.get(
+      url,
+      headers: {'Authorization': 'Bearer $auth0AccessToken'},
+    );
+
+    print(
+      'logout: ${response.request} ${response.statusCode} ${response.body}',
+    );
+
+    // TODO: this can be expanded with https://auth0.com/docs/login/logout
+    return response.statusCode == 200;
   }
 
   Auth0IdToken parseIdToken(String idToken) {
