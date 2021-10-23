@@ -44,6 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 else
                   Text('Welcome $name'),
+                if (isLoggedIn)
+                  ElevatedButton(
+                    onPressed: logoutAction,
+                    child: const Text('Logout'),
+                  )
               ], // <Widget>[]
             ),
             const Expanded(child: MarkersList())
@@ -79,6 +84,15 @@ class _HomeScreenState extends State<HomeScreen> {
         errorMessage = message;
       });
     }
+  }
+
+  Future<void> logoutAction() async {
+    setLoadingState();
+    await AuthService.instance.logout();
+    setState(() {
+      isProgressing = false;
+      isLoggedIn = false;
+    });
   }
 
   initAction() async {
