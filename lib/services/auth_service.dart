@@ -4,8 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../models/auth0_user.dart';
-import '../models/auth0_id_token.dart';
+import '../models/models.dart';
 import '../helpers/constants.dart';
 
 class AuthService {
