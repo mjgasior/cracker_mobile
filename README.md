@@ -12,6 +12,7 @@ Big thanks to :octocat: [mmBs](https://github.com/mmBs) for time and advice. :cl
     - `AUTH0_DOMAIN` - the domain address of your Auth0 account
     - `AUTH0_CLIENT_ID` - the client ID of your mobile app from Auth0
    Detailed instruction on how to define `--dart-define` arguments you can find [here](https://stackoverflow.com/questions/55004302/how-do-you-pass-arguments-from-command-line-to-main-in-flutter-dart).
+2. Please remember to turn on the **Refresh Token Rotation** and **Refresh Token Expiration** options in Auth0 (as described [here](https://auth0.com/blog/flutter-authentication-authorization-with-auth0-part-2-refresh-tokens-social-logins-more/)) which make sure that a stolen refresh token is not used multiple times.
 
 If you plan to edit the localization files present in `lib/l10n` which are of ARB  ([Application Resource Bundle](https://stackoverflow.com/questions/43082804/l10n-arb-file-format)) format, it would be a good idea to get a special IDE plugin which understands how to format such files.
 
